@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Lista conductores</title>
+    </h:head>
+    <h:body>
+        <f:view>
+
+
+            <h:form>
+                <h1><h:outputText value="Conductores registrados"/></h1>
+                <p:dataTable value="#{conductorBean.conductores}" var="item"
+                            paginator="true"
+                            rows="10"
+                            rendered="true"
+                            resizableColumns="true"
+                            sortMode="multiple"
+                            emptyMessage="No hay datos"
+                            widgetVar="conductorTable"
+                            >
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Cedula"/>
+                        </f:facet>
+                        <h:outputText value="#{item.cedula}"/>
+                    </p:column>                 
+                    <p:column headerText="Qr Code" >    
+                        <p:barcode value="#{item.cedula}  #{item.name}  #{item.lastname} #{item.vehiculeDetails}" 
+                                   type="qr" height="150px" width="150px" /> 
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Name"/>
+                        </f:facet>
+                        <h:outputText value="#{item.name}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Lastname"/>
+                        </f:facet>
+                        <h:outputText value="#{item.lastname}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Phone"/>
+                        </f:facet>
+                        <h:outputText value="#{item.phone}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Email"/>
+                        </f:facet>
+                        <h:outputText value="#{item.email}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="VehiculeDetails"/>
+                        </f:facet>
+                        <h:outputText value="#{item.vehiculeDetails}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="LicensePlate"/>
+                        </f:facet>
+                        <h:outputText value="#{item.licensePlate}"/>
+                    </p:column>
+                </p:dataTable>
+                <p:commandButton value="Registro nuevo" action="registro"/>
+            </h:form>
+
+        </f:view>
+
+    </h:body>
+</html>
+

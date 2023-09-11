@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">  
+
+    <h:head>
+        <link href="css/styles.css" rel="stylesheet" type="text/css"></link>
+        <title><h:outputText value="#{msg.title}"/></title>
+        <script name="jquery/jquery.js" library="primefaces"></script>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:commandButton action="#{conductorBean.changeLanguage('')}" value="English" image="./resources/eeuu.png" />
+            <h:commandButton action="#{conductorBean.changeLanguage('es')}" value="Spanish" image="./resources/spain.png" />
+            <p:commandButton value="#{msg.driver_table}" action="lista"></p:commandButton>
+        </h:form>
+
+        <h:form prependId="false">
+            <h1>
+                <h:outputText value="#{msg['name_details']}"/>
+            </h1>
+
+            <h:panelGrid columns="3">
+                <p:outputLabel value="#{msg.cedula}" for="cedula"/>
+                <p:inputText id="cedula" label="#{msg.cedula}"
+                             value="#{conductorBean.cedula}" required="true" disabled="#{!conductorBean.disable}">
+                    <f:attribute name="requiredMessage" value="#{msg.cedula_required}"/>
+                </p:inputText>
+                <p:message for="cedula" styleClass="errormsg"/>
+
+                <p:outputLabel value="#{msg.name}" for="name"/>
+                <p:inputText id="name" label="#{msg.name}"
+                             value="#{conductorBean.name}" required="true">
+                    <f:attribute name="requiredMessage" value="#{msg.name_required}"/>
+                </p:inputText>
+                <p:message for="name" styleClass="errormsg"/>
+
+                <p:outputLabel value="#{msg.lastname}" for="lastname"/>
+                <p:inputText id="lastname" label="#{msg.lastname}"
+                             value="#{conductorBean.lastname}" required="true">
+                    <f:attribute name="requiredMessage" value="#{msg.lastname_required}"/>
+                </p:inputText>
+                <p:message for="lastname" styleClass="errormsg"/>
+
+                <p:outputLabel value="#{msg.email}" for="email"/>
+                <p:inputText id="email" label="#{msg.email}"
+                             value="#{conductorBean.email}" required="true">
+                    <f:attribute name="requiredMessage" value="#{msg.email_required}"/>
+                </p:inputText>
+                <p:message for="email" styleClass="errormsg"/>
+
+                <p:outputLabel value="#{msg.phone}" for="phone"/>
+                <p:inputText id="phone" label="#{msg.phone}"
+                             value="#{conductorBean.phone}" required="true">
+                    <f:attribute name="requiredMessage" value="#{msg.phone_required}"/>
+                </p:inputText>
+                <p:message for="phone" styleClass="errormsg"/>
+
+                <p:outputLabel value="#{msg.vehicule_details}" for="vehicule_details"/>
+                <p:inputText id="vehicule_details" label="#{msg.vehicule_details}"
+                             value="#{conductorBean.vehicule_details}" required="true">
+                    <f:attribute name="requiredMessage" value="#{msg.vehicle_details_required}"/>
+                </p:inputText>
+                <p:message for="vehicule_details" styleClass="errormsg"/>
+
+                <p:outputLabel value="#{msg.license_plate}" for="license_plate"/>
+                <p:inputText id="license_plate" label="#{msg.license_plate}"
+                             value="#{conductorBean.license_plate}" required="true">
+                    <f:attribute name="requiredMessage" value="#{msg.license_plate_required}"/>
+                </p:inputText>
+                <p:message for="license_plate" styleClass="errormsg"/>
+                <h:commandButton id="myButton" binding="#{conductorBean.myButton}" value="#{msg.validation}" actionListener="#{conductorBean.validar()}"/>
+                
+            </h:panelGrid>
+            <br/>
+
+            <h2>Captcha</h2>
+            <p:messages id="msg"/>
+            <p:captcha id="captcha"/>
+            <br/>
+            
+            <p:commandButton id="x" value="#{msg.submit}" actionListener="#{conductorBean.guardar()}"
+                             disabled="#{conductorBean.disable}" action="submit" update="@form:x" />
+            
+
+
+        </h:form>
+    </h:body>
+</html>
+

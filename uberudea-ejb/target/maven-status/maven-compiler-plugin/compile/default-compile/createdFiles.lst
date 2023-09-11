@@ -1,0 +1,6 @@
+com\udea\ejb\ConductorFacadeLocal.class
+com\udea\entity\Conductor_.class
+com\udea\entity\Conductor.class
+com\udea\ejb\AbstractFacade.class
+com\udea\ejb\ConductorFacade.class
+com\udea\NewSessionBean.class
