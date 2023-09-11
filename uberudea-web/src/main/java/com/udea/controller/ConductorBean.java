@@ -156,6 +156,17 @@ public class ConductorBean {
         }
         
     }
+    
+    public void reiniciar(){
+        cedula = "";
+        name = "";
+        lastname = "";
+        phone = "";
+        email = "";
+        vehicule_details = "";
+        license_plate = "";
+        disable = true;
+    }
 
     private Locale locale = FacesContext.getCurrentInstance().getViewRoot().getLocale();
 
